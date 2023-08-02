@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>sceneexp_utils</name>
+  <version>1.0.3</version>
+  <description>Utilities for SceneExp</description>
+
+  <maintainer email="fahmy.adan14@imperial.ac.uk">Fahmy</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rviz2</depend>
+  <depend>carla_ros_bridge</depend>
+  <depend>carla_spawn_objects</depend>
+  <depend>carla_manual_control</depend>
+  <depend>rclcpp_components</depend>
+  <depend>tf2_ros</depend>
+  <depend>tf2_geometry_msgs</depend>
+  <depend>tf2</depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
