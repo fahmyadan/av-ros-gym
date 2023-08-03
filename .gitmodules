@@ -10,3 +10,6 @@
 [submodule "src/carla_ros_bridge/src/astuff_sensor_msgs"]
 	path = src/carla_ros_bridge/src/astuff_sensor_msgs
 	url = https://github.com/astuff/astuff_sensor_msgs.git
+[submodule "src/ros_gym/ros_gym/gym_carla"]
+	path = src/ros_gym/ros_gym/gym_carla
+	url = git@github.com:fahmyadan/gym-carla.git
