@@ -38,21 +38,22 @@ def generate_launch_description():
         ),
         launch_arguments=[
             ('town', town),
+            ('passive', 'true')
 
         ]
     )
 
-    spawn_vehicle = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution([
-                FindPackageShare('carla_spawn_objects'),
-                'carla_spawn_objects.launch.py',
-            ]),
-        ),
-        launch_arguments=[
-           ('spawn_point_ego_vehicle_x',spawn_point_ego),
-        ]
-    )
+    # spawn_vehicle = IncludeLaunchDescription(
+    #     PythonLaunchDescriptionSource(
+    #         PathJoinSubstitution([
+    #             FindPackageShare('carla_spawn_objects'),
+    #             'carla_spawn_objects.launch.py',
+    #         ]),
+    #     ),
+    #     launch_arguments=[
+    #        ('spawn_point_ego_vehicle_x',spawn_point_ego),
+    #     ]
+    # )
     vehicle_control = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             PathJoinSubstitution([
@@ -80,7 +81,7 @@ def generate_launch_description():
 
     return LaunchDescription([
         simulation_environment,
-        spawn_vehicle, 
+        # spawn_vehicle, 
         software_stack
     ])
 
