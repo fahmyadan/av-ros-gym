@@ -14,7 +14,7 @@ After installing the system requirements above: \
 ``` bash
 git clone --recursive git@github.com:fahmyadan/av-ros-gym.git && cd av-ros-gym
 
-sudo chmod +x setup.sh && ./setup.bash
+sudo chmod +x setup.bash && ./setup.bash
 ```
 
 The code comprises of a bunch of submodules; ros_bridge, astuff_msgs and gym-carla. The latter must be installed using setuptools distribution:
