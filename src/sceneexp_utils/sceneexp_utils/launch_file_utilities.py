@@ -103,10 +103,12 @@ class Package:
 
 
 collection_pkgs = [Package(name) for name in (
+    'carla_spawn_objects',
     'carla_manual_control',
     'carla_ackermann_control',
     'carla_waypoint_publisher',
     'carla_ad_agent',
+    'ros_gym'
 )]
 
 # function gets options from packages. Packages are objects stores in 'collection_pkgs'
