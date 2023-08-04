@@ -17,13 +17,12 @@ git clone --recursive git@github.com:fahmyadan/av-ros-gym.git && cd av-ros-gym
 sudo chmod +x setup.bash && ./setup.bash
 ```
 
-The code comprises of a bunch of submodules; ros_bridge, astuff_msgs and gym-carla. As a result, there could be some issues when building and running the ros nodes for the first time. See the issues tab on the common errors and how to fix them. Please also add to this tab as more issues are encountered. 
+The code comprises of a bunch of submodules; ros_bridge, astuff_msgs and gym-carla. The script `setup.bash` updates and installs all the python and ros dependencies with up to date versions. As a result, there could be some issues when building and running the ros nodes for the first time. See the issues tab on the common errors and how to fix them. Please also add to this tab as more issues are encountered. 
 
 # Build Packages
 From PROJECT ROOT:
 
 ``` bash 
-cd /path/to/av-ros-gym
 colcon build && source install/setup.bash 
 ```
 
