@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'ros_gym_node = ros_gym.reset_spawn_node:main'
+            'reset_service= ros_gym.reset_service_node:main',
+            'reset_client= ros_gym.reset_client_node:main',
         ],
     },
 )
