@@ -99,16 +99,18 @@ class Package:
     @property
     def launch_files(self) -> Iterable[Path]:
         pkg_path = get_package_share_path(self.name)
-        return (pkg_path / 'launch').glob('*.launch*')
+        return (pkg_path).glob('*.launch*')
 
 
 collection_pkgs = [Package(name) for name in (
     'carla_manual_control',
+    'carla_ad_agent',
     'carla_ackermann_control',
     'carla_waypoint_publisher',
-    'carla_ad_agent',
     'ros_gym'
 )]
+
+
 
 # function gets options from packages. Packages are objects stores in 'collection_pkgs'
 def get_launch_option_for_package(pkg: Package) -> Optional[str]:

@@ -27,7 +27,6 @@ def ld_entity_for_package(package: Package, context: Any) -> Optional[LaunchDesc
             PythonLaunchDescriptionSource(
                 launch_file_path=PathJoinSubstitution([
                     FindPackageShare(package.name),
-                    'launch',
                     exec_name,
                 ])
             )
