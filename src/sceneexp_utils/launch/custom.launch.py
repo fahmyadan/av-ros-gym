@@ -25,8 +25,6 @@ launch_options_path = save_dir / "launch_options.yaml"
 def generate_launch_description():
     simulator, package_options =  ask_user_for_options()
 
-    # spawn_point_ego ='spawn_point_hero0'
-    spawn_point_ego = 'VehicleSpawnPoint154'
     town = LaunchConfiguration('town', default='Town05')
     
     simulation_environment = IncludeLaunchDescription(
@@ -40,29 +38,6 @@ def generate_launch_description():
             ('town', town),
             ('passive', 'false')
 
-        ]
-    )
-
-    spawn_vehicle = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution([
-                FindPackageShare('carla_spawn_objects'),
-                'carla_spawn_objects.launch.py',
-            ]),
-        ),
-        launch_arguments=[
-           ('spawn_point_ego_vehicle_x',spawn_point_ego),
-        ]
-    )
-    vehicle_control = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution([
-                FindPackageShare('carla_manual_control'),
-                'carla_manual_control.launch.py',
-            ]),
-        ),
-        launch_arguments=[
-            ('role_name', 'ego_vehicle')
         ]
     )
 
@@ -80,8 +55,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        simulation_environment,
-        spawn_vehicle, 
+        simulation_environment, 
         software_stack
     ])
 

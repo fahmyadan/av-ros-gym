@@ -104,6 +104,7 @@ class Package:
 
 collection_pkgs = [Package(name) for name in (
     'carla_manual_control',
+    'carla_spawn_objects',
     'carla_ad_agent',
     'carla_ackermann_control',
     'carla_waypoint_publisher',
