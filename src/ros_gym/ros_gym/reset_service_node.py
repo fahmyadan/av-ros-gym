@@ -31,7 +31,8 @@ class ResetNode(Node):
         with open(params_path, 'r') as f:
 
             params = yaml.safe_load(f)
-
+        
+        self.get_logger().info(f'Params {params}')
         self.carla_env = CarlaEnv(params)
         cb_group = MutuallyExclusiveCallbackGroup()
         qos_profile = QoSProfile(depth=10)
@@ -45,7 +46,8 @@ class ResetNode(Node):
         
         if not self.reset_called:
             self.reset_called = True
-            response = self.carla_env.reset() 
+            # response = self.carla_env.reset() 
+            self.get_logger().info('Successful Calll (service)')
         
         self.get_logger().info('Resetting Gym environment (service)')
 
