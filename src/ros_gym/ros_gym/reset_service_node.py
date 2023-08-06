@@ -10,7 +10,7 @@ import sys
 import os
 import pkg_resources
 from rclpy.qos import QoSProfile
-from std_srvs.srv import Empty
+from std_srvs.srv import Empty, SetBool
 
 try:
     from gym_carla.envs.carla_env import CarlaEnv
@@ -35,22 +35,24 @@ class ResetNode(Node):
         self.carla_env = CarlaEnv(params)
         cb_group = MutuallyExclusiveCallbackGroup()
         qos_profile = QoSProfile(depth=10)
-        self.reset_service = self.create_service(Empty, 'reset_service', self.reset_cb, callback_group=cb_group, qos_profile=qos_profile)
+        self.reset_service = self.create_service(SetBool, 'reset_service', self.reset_cb, callback_group=cb_group, qos_profile=qos_profile)
         # initial_obs = self.create_service()
         # initial_obs = self.create_timer(2.0, self.reset_cb, callback_group=cb_group)
     
-    def reset_cb(self) -> None:
+    def reset_cb(self, req, response) -> None:
+        self.reset_called = req.data
+        self.get_logger().info(f'Reset Bool {self.reset_called}')
+        
         if not self.reset_called:
             self.reset_called = True
-            initial_obs = self.carla_env.reset() 
-            
-        return initial_obs
-
-    def make_pub1(self) -> None:
-        pass
+            response = self.carla_env.reset() 
+        
+        self.get_logger().info('Resetting Gym environment (service)')
 
 
-    
+        return response
+
+
 def spin(node: Callable[[], Node]) -> None:
 
     rclpy.init(args=sys.argv)
