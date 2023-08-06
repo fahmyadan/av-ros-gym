@@ -14,7 +14,7 @@ def generate_launch_description():
     launch_description = LaunchDescription([
         DeclareLaunchArgument(
             name='request',
-            default_value='false'
+            default_value='true'
         ), 
         Node(
         package='ros_gym',
@@ -25,7 +25,18 @@ def generate_launch_description():
             {
                 'request': LaunchConfiguration('request')
             },
-     ] )
+     ] ),
+     Node(
+        package='ros_gym',
+        executable='reset_service',
+        name='reset_service',
+        output='screen',
+    #     parameters=[
+    #         # {
+    #         #      'request': LaunchConfiguration('request')
+    #         # },
+    #  ] 
+     )
 ])
 
     return launch_description
