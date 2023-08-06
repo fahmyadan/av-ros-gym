@@ -7,7 +7,7 @@ import sys
 import os
 import pkg_resources
 from rclpy.qos import QoSProfile
-from std_srvs.srv import Empty
+from std_srvs.srv import Empty, SetBool
 
 
 class ResetClientNode(Node):
@@ -17,14 +17,14 @@ class ResetClientNode(Node):
         self.reset_called = False
         cb_group = MutuallyExclusiveCallbackGroup()
         qos_profile = QoSProfile(depth=10)
-        self.reset_client = self.create_client(Empty, 'reset_service', callback_group=cb_group, qos_profile=qos_profile)
-
+        self.reset_client = self.create_client(SetBool, 'reset_service', callback_group=cb_group, qos_profile=qos_profile)
+        self.req = SetBool.Request()
         while not self.reset_client.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('Reset service not available, waiting again...')
 
     
-    def request_reset(self, req, response) -> None:
-        self.future = self.reset_client.call_async(req)
+    def request_reset(self) -> None:
+        self.future = self.reset_client.call(self.req)
         rclpy.spin_until_future_complete(self, self.future)
 
 
